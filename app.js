@@ -36,6 +36,7 @@ const compoundKanaMap = [
 
 loadKana = (location, previewLocation, imgPath, gifPath, map) => {
     const locationNode = document.querySelector(location)
+    if (!locationNode) return;
     const previewImgNode  = document.querySelector(previewLocation)
 
     map.map((row) => {
@@ -98,7 +99,6 @@ const loadAllKana = () => {
 }
 
 loadPage = async (path, page) => {
-    console.log(path + page + ".html")
     try {
         const res = await fetch(path + page + ".html");
         if (!res.ok) {
