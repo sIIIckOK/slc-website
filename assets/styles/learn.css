@@ -1,0 +1,15 @@
+#learn-div {
+    width: 80%;
+    margin: 0px auto;
+}
+
+#learn-div>h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+#learn-div>p {
+    margin: 0;
+    font-size: 1.8rem;
+}
+

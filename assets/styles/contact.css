@@ -1,0 +1,15 @@
+
+#contact-us-content-div {
+    font-size: 1.7rem;
+    font-weight: 50;
+    margin: auto;
+    margin-top: 100px;
+    height: 500px;
+    width: 80%;
+    text-align: center;
+}
+
+#contact-us-content-div #contact-us-title-div {
+    text-align: center;
+    font-size: 2rem;
+}
