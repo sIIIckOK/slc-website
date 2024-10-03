@@ -33,7 +33,7 @@ nav {
 
 nav ul {
     display: flex;
-    gap: 5px;
+    gap: 15px;
     margin: 15px;
 
     list-style: none;
@@ -109,14 +109,13 @@ footer #footer-upper ul {
         width: 120px;
     }
 }
-
 @media (max-width: 700px) {
     #main-logo {
-        margin-top: 20px;
+        margin-top: 0px;
     }
     nav {
         flex-direction: column;
-        height: 190px;
+        height: 210px;
     }
     nav ul {
         flex-direction: row;
@@ -144,17 +143,17 @@ footer #footer-upper ul {
     }
 }
 
-@media (max-width: 510px) {
+@media (max-width: 540px) {
     nav ul {
         font-size: 1.0rem;
     }
 }
-@media (max-width: 460px) {
+@media (max-width: 490px) {
     nav ul {
         font-size: 0.9rem;
     }
 }
-@media (max-width: 375px) {
+@media (max-width: 385px) {
     nav ul {
         font-size: 0.8rem;
     }
