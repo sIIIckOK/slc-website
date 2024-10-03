@@ -120,12 +120,16 @@
     background-color: #aaaaaa;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
+    #learn-div>p, #learn-div>h1 {
+        font-size: 1.12rem;
+    }
+
     #hiragana-div, #katakana-div {
-        width: 55%;
+        width: 70%;
         margin: 0px auto;
         height: 900px;
-        gap: 10px;
+        gap: 30px;
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(3, 1fr);
     }
@@ -135,7 +139,8 @@
         grid-row: 1 / 1;
         grid-column: 1 / 3;
 
-        margin: 40px;
+        margin: 20px;
+        margin-bottom: 40px;
         min-height: 150px;
         left: 40%;
     }
@@ -169,11 +174,27 @@
 
 @media (max-width: 750px) {
     #hiragana-div, #katakana-div {
-        width: 90%;
+        width: 100%;
+        translate: -50px 0px;
+    }
+}
+
+@media (max-width: 630px) {
+    #learn-div>p, #learn-div>h1 {
+        font-size: 1.0rem;
+    }
+    #hiragana-div, #katakana-div {
+        width: 100%;
+    }
+    .kana-grid-item img {
+        width: 35px;
     }
 }
 
 @media (max-width: 450px) {
+    #hiragana-div, #katakana-div {
+        width: 100%;
+    }
     .kana-grid-item img {
         width: 35px;
     }
@@ -184,7 +205,7 @@
     }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 360px) {
     .kana-grid-item {
         width: 35px;
         height: 50px;

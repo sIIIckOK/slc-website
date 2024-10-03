@@ -155,7 +155,7 @@ footer #footer-upper ul {
 }
 @media (max-width: 385px) {
     nav ul {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 }
 
