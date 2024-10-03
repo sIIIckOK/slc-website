@@ -111,7 +111,7 @@ loadPage = async (path, page) => {
     }
 }
 
-handleHashChange = async () => {
+handleHashChange = async (e) => {
     const path = "./components/"
 
     let page = window.location.hash.slice(1);
@@ -122,9 +122,12 @@ handleHashChange = async () => {
     loader.classList.remove("hidden");
     window.moveTo(0, 0);
     const content = await loadPage(path, page);
-    if (content == page404) title = "Page Not Found";
+    if (content == page404) {
+        title = "Page Not Found";
+    }
     setTimeout(1000)
 
+    document.title = title;
     window.scrollTo({ top: 0 });
     document.querySelector("#root").innerHTML = content;
     loader.classList.add("hidden");
