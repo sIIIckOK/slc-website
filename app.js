@@ -34,7 +34,7 @@ const compoundKanaMap = [
     ["kyo", "sho", "cho", "nyo", "hyo", "myo", "ryo", "gyo", "jyo", "dyo", "byo", "pyo"],
 ];
 
-loadKana = (location, previewLocation, imgPath, gifPath, map) => {
+const loadKana = (location, previewLocation, imgPath, gifPath, map) => {
     const locationNode = document.querySelector(location)
     if (!locationNode) return;
     const previewImgNode  = document.querySelector(previewLocation)
@@ -98,7 +98,7 @@ const loadAllKana = () => {
         );
 }
 
-loadPage = async (path, page) => {
+const loadPage = async (path, page) => {
     try {
         const res = await fetch(path + page + ".html");
         if (!res.ok) {
@@ -111,7 +111,7 @@ loadPage = async (path, page) => {
     }
 }
 
-handleHashChange = async (e) => {
+const handleHashChange = async () => {
     const path = "./components/"
 
     let page = window.location.hash.slice(1);

@@ -31,7 +31,7 @@
     font-size: 1.9rem;
     width: 250px;
     padding: 15px;
-    background-color: #ff87c5; 
+    background-color: var(--color-accent); 
     color: white;
 
     border: solid 2px #ff87c5;
@@ -41,7 +41,7 @@
 }
 
 #hero #hero-text-div button:hover {
-    background-color: #fca9d4;
+    opacity: 70%;
     border: solid 2px #fca9d4;
 }
 
