@@ -34,6 +34,7 @@ const compoundKanaMap = [
     ["kyo", "sho", "cho", "nyo", "hyo", "myo", "ryo", "gyo", "jyo", "dyo", "byo", "pyo"],
 ];
 
+
 const loadKana = (location, previewLocation, imgPath, gifPath, map) => {
     const locationNode = document.querySelector(location)
     if (!locationNode) return;
@@ -100,7 +101,7 @@ const loadAllKana = () => {
 
 const loadPage = async (path, page) => {
     try {
-        const res = await fetch(path + page + ".html");
+        const res = await fetch(path + page);
         if (!res.ok) {
             return page404;
         }
@@ -111,21 +112,50 @@ const loadPage = async (path, page) => {
     }
 }
 
+const routes = [
+    {
+        path: "",
+        component: "home.html",
+        title: "EduNetworkNepal | Home",
+    },
+    {
+        path: "home",
+        component: "home.html",
+        title: "Home",
+    },
+    {
+        path: "learn",
+        component: "learn.html",
+        title: "Learning Material",
+    },
+    {
+        path: "contact-us",
+        component: "contact-us.html",
+        title: "Contact Us",
+    },
+]
+
 const handleHashChange = async () => {
-    const path = "./components/"
+    const path = "./components/";
 
-    let page = window.location.hash.slice(1);
-    let title = page;
+    let hashValue = window.location.hash.slice(1);
+    let component = "";
+    let title = "";
 
-    if (page === "") page = "home";
+    routes.map((object) => {
+        if (hashValue === object.path) {
+            title = object.title;
+            component = object.component;
+            return;
+        }
+    })
 
     loader.classList.remove("hidden");
     window.moveTo(0, 0);
-    const content = await loadPage(path, page);
+    const content = await loadPage(path, component);
     if (content == page404) {
         title = "Page Not Found";
     }
-    setTimeout(1000)
 
     document.title = title;
     window.scrollTo({ top: 0 });
@@ -135,11 +165,12 @@ const handleHashChange = async () => {
 
 {
     (async () => {
+        loadAllKana();
         window.addEventListener("hashchange", async () => {
             await handleHashChange();
-            if (window.location.hash.slice(1) === "learn") {
-                loadAllKana();
-            }
+            // if (window.location.hash.slice(1) === "learn") {
+            loadAllKana();
+            // }
         });
         await handleHashChange("#hiragana-grid");
         loadAllKana();
