@@ -95,9 +95,10 @@ const loadAllKana = () => {
         );
 }
 
-const loadPage = async (path, page) => {
+const loadPage = async (path, component) => {
+    if (component === undefined) return page404.content;
     try {
-        const res = await fetch(path + page);
+        const res = await fetch(path + component);
         if (!res.ok) {
             return page404.content;
         }
@@ -162,7 +163,6 @@ const handleHashChange = async () => {
     document.title = title;
     window.scrollTo({ top: 0 });
     document.querySelector("#root").innerHTML = content;
-    console.log(content);
     loader.classList.add("hidden");
 }
 
