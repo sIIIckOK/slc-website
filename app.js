@@ -1,7 +1,3 @@
-const page404 =
-    `<div id="page-not-found-div"> 
-    <h1>404 Page Not Found</h1> 
-</div>`;
 
 const loader = document.querySelector("#loader");
 
@@ -103,12 +99,12 @@ const loadPage = async (path, page) => {
     try {
         const res = await fetch(path + page);
         if (!res.ok) {
-            return page404;
+            return page404.content;
         }
         const text = await res.text();
         return text
     } catch {
-        return page404;
+        return page404.content;
     }
 }
 
@@ -135,11 +131,17 @@ const routes = [
     },
 ]
 
+const page404 = {
+    path: "404-page-not-found",
+    content: `<div id="page-not-found-div"> <h1>404 Page Not Found</h1> </div>`,
+    title: "Page Not Found",
+};
+
 const handleHashChange = async () => {
     const path = "./components/";
 
     let hashValue = window.location.hash.slice(1);
-    let component = "";
+    let component = undefined;
     let title = "";
 
     routes.map((object) => {
@@ -153,24 +155,24 @@ const handleHashChange = async () => {
     loader.classList.remove("hidden");
     window.moveTo(0, 0);
     const content = await loadPage(path, component);
-    if (content == page404) {
-        title = "Page Not Found";
+    if (component === undefined) {
+        title = page404.title;
     }
 
     document.title = title;
     window.scrollTo({ top: 0 });
     document.querySelector("#root").innerHTML = content;
+    console.log(content);
     loader.classList.add("hidden");
 }
 
 {
     (async () => {
-        loadAllKana();
         window.addEventListener("hashchange", async () => {
             await handleHashChange();
-            // if (window.location.hash.slice(1) === "learn") {
-            loadAllKana();
-            // }
+            if (window.location.hash.slice(1) === "learn") {
+                loadAllKana();
+            }
         });
         await handleHashChange("#hiragana-grid");
         loadAllKana();
